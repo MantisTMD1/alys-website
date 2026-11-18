@@ -219,6 +219,22 @@
     render();
   });
 
+  /* ----- Heavy third-party embeds (the HoneyBook form) load only as they come near ----- */
+  document.querySelectorAll('iframe[data-lazy-frame]').forEach((frame) => {
+    const load = () => {
+      if (frame.src) return;
+      frame.addEventListener('load', () => frame.parentElement.classList.add('is-loaded'), { once: true });
+      frame.src = frame.dataset.src;
+    };
+    if (!('IntersectionObserver' in window)) return load();
+    new IntersectionObserver(([entry], obs) => {
+      if (entry.isIntersecting) { load(); obs.disconnect(); }
+    }, { rootMargin: '400px 0px' }).observe(frame);
+    // Anyone who jumps straight to the form gets it loaded right away
+    document.querySelectorAll(`a[href="#${frame.closest('section')?.id}"]`).forEach((a) => a.addEventListener('click', load));
+    try { if (location.hash && frame.closest(location.hash)) load(); } catch (e) { /* not a selector */ }
+  });
+
   /* ----- Timeline: the spine fills as you scroll through it ----- */
   const timeline = document.querySelector('[data-timeline]');
   if (timeline) {

@@ -88,7 +88,14 @@
   box-shadow: var(--shadow-print);
   outline: 1.5px solid var(--ink); outline-offset: clamp(-0.75rem, -1vw, -0.5rem);
 }
-.c-form__frame { display: block; width: 100%; height: 2900px; border: 0; background: transparent; }
+.c-form__slot { position: relative; }
+.c-form__loading {
+  position: absolute; top: 2rem; left: 0; right: 0; text-align: center;
+  font-family: var(--font-mono); font-weight: 500; font-size: var(--step--1);
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--on-cream-muted);
+}
+.c-form__slot.is-loaded .c-form__loading { display: none; }
+.c-form__frame { position: relative; display: block; width: 100%; height: 2900px; border: 0; background: transparent; }
 .c-form__fallback { margin-top: 1rem; font-size: var(--step--1); color: var(--on-cream-muted); text-align: center; }
 .c-form__fallback a { color: var(--rust-deep); }
 

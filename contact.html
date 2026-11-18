@@ -22,7 +22,7 @@
   <link rel="preload" href="assets/fonts/BagelFatOne-400.woff2" as="font" type="font/woff2" crossorigin>
   <style>/* Self-hosted Google Fonts (latin subset) */ @font-face { font-family: 'Bagel Fat One'; font-style: normal; font-weight: 400; font-display: swap; src: url("assets/fonts/BagelFatOne-400.woff2") format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; } @font-face { font-family: 'Roboto Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url("assets/fonts/RobotoMono-400.woff2") format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; } @font-face { font-family: 'Roboto Mono'; font-style: normal; font-weight: 500; font-display: swap; src: url("assets/fonts/RobotoMono-500.woff2") format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; } @font-face { font-family: 'Work Sans'; font-style: italic; font-weight: 400; font-display: swap; src: url("assets/fonts/WorkSans-400i.woff2") format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; } @font-face { font-family: 'Work Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url("assets/fonts/WorkSans-400.woff2") format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; } @font-face { font-family: 'Work Sans'; font-style: normal; font-weight: 500; font-display: swap; src: url("assets/fonts/WorkSans-500.woff2") format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }</style>
   <link rel="stylesheet" href="css/styles.css?v=18">
-  <link rel="stylesheet" href="css/contact.css?v=5">
+  <link rel="stylesheet" href="css/contact.css?v=6">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -123,7 +123,11 @@
         </div>
 
         <div class="c-form__card reveal">
-          <iframe class="c-form__frame" src="https://alycrossphotography.hbportal.co/public/contact" title="Inquiry form for Aly Cross Photography" loading="lazy"></iframe>
+          <div class="c-form__slot">
+            <p class="c-form__loading" aria-hidden="true">Loading the form&hellip;</p>
+            <iframe class="c-form__frame" data-src="https://alycrossphotography.hbportal.co/public/contact" title="Inquiry form for Aly Cross Photography" data-lazy-frame></iframe>
+            <noscript><iframe class="c-form__frame" src="https://alycrossphotography.hbportal.co/public/contact" title="Inquiry form for Aly Cross Photography"></iframe></noscript>
+          </div>
           <p class="c-form__fallback">Form not loading? <a href="https://alycrossphotography.hbportal.co/public/contact" target="_blank" rel="noopener">Open it in a new tab</a>.</p>
         </div>
       </div>
@@ -185,6 +189,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=10"></script>
+  <script src="js/main.js?v=11"></script>
 </body>
 </html>
