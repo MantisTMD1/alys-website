@@ -1,0 +1,125 @@
+/* =========================================================
+   Gallery page — builds on the tokens and primitives in styles.css
+   ========================================================= */
+
+/* ===== Hero: full-bleed studio video ===== */
+.g-hero {
+  position: relative; isolation: isolate; overflow: hidden;
+  min-height: clamp(26rem, 74svh, 48rem);
+  display: grid; place-items: center; text-align: center;
+  padding: var(--section) var(--gutter);
+  background: var(--ink); color: var(--cream);
+}
+.g-hero__video { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; }
+.g-hero::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    radial-gradient(ellipse at center, rgb(40 42 39 / 0.62), rgb(40 42 39 / 0.38) 70%),
+    linear-gradient(to top, rgb(40 42 39 / 0.35), transparent 40%);
+}
+.g-hero__content { display: grid; justify-items: center; gap: 1.1rem; }
+.g-hero__title { font-size: clamp(3rem, 1.4rem + 6.4vw, 8rem); color: var(--cream); line-height: 0.92; }
+.g-hero__sub {
+  font-family: var(--font-mono); font-weight: 500; font-size: var(--step--1);
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--cream);
+}
+.g-hero__toggle { right: var(--gutter); bottom: 1.5rem; }
+.g-hero__links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 1.25rem; }
+.g-hero__link {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 3rem; padding: 0.8rem 1.6rem;
+  font-family: var(--font-mono); font-weight: 500; font-size: var(--step--1);
+  letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none;
+  color: var(--cream); border: 1.5px solid var(--cream);
+  background: rgb(40 42 39 / 0.25); backdrop-filter: blur(4px);
+  transition: background-color 0.35s var(--ease-out), color 0.35s var(--ease-out), translate 0.35s var(--ease-out);
+}
+.g-hero__link:hover { background: var(--cream); color: var(--ink); translate: 0 -2px; }
+.g-hero__link:focus-visible { outline: 2px solid var(--cream); outline-offset: 4px; }
+
+/* ===== Gallery rows ===== */
+.g-row { overflow: hidden; }
+.g-row--cream { background: var(--cream); }
+.g-row--sage { background: var(--sage); }
+.g-row__inner {
+  max-width: var(--max); margin-inline: auto;
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2.5rem, 1rem + 5vw, 6.5rem); align-items: center;
+  padding: var(--section) var(--gutter);
+}
+.g-row--flip .g-row__copy { order: 2; }
+
+.g-row__copy { display: grid; justify-items: start; gap: 1rem; min-width: 0; }
+.g-row__num {
+  font-family: var(--font-display); font-size: clamp(4rem, 2.5rem + 5vw, 8rem); line-height: 0.8;
+  color: transparent; -webkit-text-stroke: 1.5px var(--olive-deep);
+  margin-bottom: 0.5rem;
+}
+.g-row__title { font-size: clamp(2.6rem, 1.5rem + 3.6vw, 5rem); }
+.g-row__tag {
+  font-family: var(--font-body); font-style: italic;
+  font-size: var(--step-2); line-height: 1.2; color: var(--rust-deep);
+}
+.g-row--sage .g-row__tag { color: var(--olive-deep); }
+.g-row__btn { margin-top: 1rem; }
+
+/* photo stack: an outlined main frame with two prints tucked against it */
+.g-stack { position: relative; display: block; aspect-ratio: 1.22; }
+.g-stack__main {
+  position: absolute; left: 0; top: 0; width: 56%; height: 100%;
+  display: block; overflow: hidden;
+  border: 1.5px solid var(--ink); padding: 0.65rem;
+}
+.g-stack__main img { width: 100%; height: 100%; object-fit: cover; transition: scale 1.2s var(--ease-out); }
+.g-stack__print {
+  position: absolute; display: block;
+  transition: rotate 0.8s var(--ease-out), translate 0.8s var(--ease-out), box-shadow 0.8s var(--ease-out);
+}
+.g-stack__print--a { width: 32%; aspect-ratio: 0.76; right: 7%; top: 3%; rotate: 4deg; }
+.g-stack__print--b { width: 46%; aspect-ratio: 1.28; right: 0; bottom: 3%; rotate: -3deg; z-index: 2; }
+
+.g-row--flip .g-stack__main { left: auto; right: 0; }
+.g-row--flip .g-stack__print--a { right: auto; left: 7%; rotate: -4deg; }
+.g-row--flip .g-stack__print--b { right: auto; left: 0; rotate: 3deg; }
+
+/* hovering the photos or the button fans the prints out */
+.g-stack:hover .g-stack__main img,
+.g-row__inner:has(.g-row__btn:hover) .g-stack__main img { scale: 1.05; }
+.g-stack:hover .g-stack__print--a,
+.g-row__inner:has(.g-row__btn:hover) .g-stack__print--a { rotate: 8deg; translate: 0.75rem -0.75rem; box-shadow: var(--shadow-print-lift); }
+.g-stack:hover .g-stack__print--b,
+.g-row__inner:has(.g-row__btn:hover) .g-stack__print--b { rotate: -6deg; translate: 0.5rem 0.75rem; box-shadow: var(--shadow-print-lift); }
+.g-row--flip .g-stack:hover .g-stack__print--a,
+.g-row--flip .g-row__inner:has(.g-row__btn:hover) .g-stack__print--a { rotate: -8deg; translate: -0.75rem -0.75rem; }
+.g-row--flip .g-stack:hover .g-stack__print--b,
+.g-row--flip .g-row__inner:has(.g-row__btn:hover) .g-stack__print--b { rotate: 6deg; translate: -0.5rem 0.75rem; }
+
+/* prints drop in as the row scrolls into view */
+.js .g-stack__print { opacity: 0; translate: 0 -1.5rem; filter: sepia(0.8) brightness(1.25) blur(2px); }
+.js .g-stack.is-visible .g-stack__print {
+  opacity: 1; translate: 0 0; filter: none;
+  transition: opacity 1.1s var(--ease-out), translate 1.1s var(--ease-out), filter 1.4s var(--ease-out), rotate 0.8s var(--ease-out), box-shadow 0.8s var(--ease-out);
+}
+.js .g-stack.is-visible .g-stack__print--b { transition-delay: 0.2s, 0.2s, 0.2s, 0s, 0s; }
+
+/* ===== Responsive ===== */
+@media (max-width: 1020px) {
+  .g-row__inner { grid-template-columns: 1fr; }
+  .g-row--flip .g-row__copy { order: 0; }
+  .g-stack { width: min(100%, 40rem); }
+}
+
+@media (max-width: 720px) {
+  .g-stack { aspect-ratio: 0.95; }
+  .g-stack__main { width: 66%; height: 88%; }
+  .g-stack__print--a { width: 36%; right: 2%; top: 6%; }
+  .g-row--flip .g-stack__print--a { left: 2%; }
+  .g-stack__print--b { width: 58%; bottom: 0; }
+  .g-hero__toggle { right: 1rem; bottom: 1rem; }
+  .g-hero__links { gap: 0.5rem; }
+  .g-hero__link { padding: 0.7rem 1rem; letter-spacing: 0.16em; min-height: 2.75rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .g-stack__print { opacity: 1; translate: 0 0; filter: none; }
+}

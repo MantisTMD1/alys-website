@@ -1,0 +1,163 @@
+/* =========================================================
+   Investment page — builds on the tokens and primitives in styles.css
+   ========================================================= */
+
+/* ===== Intro ===== */
+.i-intro { background: var(--cream); overflow: hidden; }
+.i-intro__inner {
+  max-width: var(--max); margin-inline: auto;
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  gap: clamp(2.5rem, 1rem + 5vw, 6.5rem); align-items: center;
+  padding: clamp(3.5rem, 2rem + 5vw, 7rem) var(--gutter) clamp(4rem, 3rem + 5vw, 8rem);
+}
+.i-intro__copy { display: grid; gap: 1.6rem; min-width: 0; }
+.i-intro__title { font-size: clamp(2.3rem, 1.4rem + 3.2vw, 4.4rem); max-width: 16ch; }
+.i-intro__lede { color: var(--on-cream-muted); font-size: var(--step-1); line-height: 1.6; max-width: 58ch; }
+
+/* quick index of the three collections */
+.price-index { margin-top: 0.75rem; border-top: 1.5px solid var(--ink); max-width: 36rem; }
+.price-index a {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+  padding: 0.95rem 0.25rem; border-bottom: 1px solid rgb(40 42 39 / 0.2);
+  text-decoration: none;
+  transition: padding 0.5s var(--ease-out), color 0.3s;
+}
+.price-index__name { font-family: var(--font-display); font-size: var(--step-1); text-transform: uppercase; line-height: 1.1; }
+.price-index__price {
+  font-family: var(--font-mono); font-weight: 500; font-size: var(--step--1); letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--rust-deep); white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 0.6rem;
+}
+.price-index__price::after {
+  content: ""; width: 0.55rem; height: 0.55rem;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  rotate: 45deg; translate: 0 -0.15rem;
+  transition: translate 0.4s var(--ease-out);
+}
+.price-index a:hover { padding-left: 0.85rem; color: var(--rust-deep); }
+.price-index a:hover .price-index__price::after { translate: 0 0.1rem; }
+
+.i-intro__media { justify-self: end; width: 100%; max-width: 24rem; }
+.i-intro__frame {
+  position: relative; aspect-ratio: 9 / 15;
+  margin: 0 clamp(1rem, 2vw, 1.75rem) clamp(1rem, 2vw, 1.75rem) 0;
+}
+.i-intro__frame::before {
+  content: ""; position: absolute; z-index: -1;
+  inset: clamp(1rem, 2vw, 1.75rem) calc(clamp(1rem, 2vw, 1.75rem) * -1) calc(clamp(1rem, 2vw, 1.75rem) * -1) clamp(1rem, 2vw, 1.75rem);
+  border: 2px solid var(--ink);
+}
+.i-intro__frame video { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; background: var(--sage); }
+
+/* ===== Testimonial bands ===== */
+.i-quote { background: var(--sage); overflow: hidden; }
+.i-quote__inner {
+  max-width: 68rem; margin-inline: auto;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 1rem + 6vw, 7rem); align-items: center;
+  padding: var(--section) var(--gutter);
+}
+.i-quote__copy { display: grid; gap: 1.5rem; min-width: 0; max-width: 32rem; }
+.i-quote__title { font-size: var(--step-3); }
+.i-quote__text p { font-size: var(--step-1); line-height: 1.6; color: var(--on-sage-muted); text-wrap: pretty; }
+
+.i-quote__photos { position: relative; aspect-ratio: 1; }
+.i-quote__photo { position: absolute; }
+.i-quote__photo--a { width: 52%; aspect-ratio: 0.72; left: 4%; top: 0; rotate: -3.5deg; }
+.i-quote__photo--b { width: 60%; aspect-ratio: 1.3; right: 0; bottom: 4%; rotate: 3deg; padding-bottom: clamp(0.45rem, 0.3rem + 0.6vw, 0.85rem); }
+.i-quote__photos--single { aspect-ratio: auto; justify-self: center; width: min(100%, 24rem); }
+.i-quote__photo--solo { position: relative; aspect-ratio: 0.78; rotate: 2.5deg; }
+.i-quote__flower {
+  position: absolute; z-index: 2; width: 42%; left: -18%; bottom: -8%; pointer-events: none;
+  --r: -10deg; rotate: var(--r); animation: sway 10s var(--ease-in-out) infinite;
+}
+
+/* ===== Collections ===== */
+.collection { scroll-margin-top: 5rem; overflow: hidden; }
+.collection--cream { background: var(--cream); }
+.collection--sage { background: var(--sage); }
+.collection__inner {
+  max-width: var(--max); margin-inline: auto;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 1rem + 6vw, 7.5rem); align-items: center;
+  padding: var(--section) var(--gutter);
+}
+.collection--flip .collection__media { order: 2; }
+
+.collection__copy { display: grid; gap: 1.25rem; justify-items: start; min-width: 0; max-width: 34rem; }
+.collection__title { font-size: clamp(2.2rem, 1.3rem + 2.9vw, 4.1rem); }
+.collection__for { color: var(--rust-deep); margin-bottom: 0.25rem; }
+.collection--sage .collection__for { color: var(--olive-deep); }
+.collection--cream .body-copy { color: var(--on-cream-muted); }
+.collection--sage .body-copy { color: var(--on-sage-muted); }
+
+.included__title {
+  margin-top: 0.75rem;
+  font-family: var(--font-mono); font-weight: 500; font-size: var(--step--1);
+  letter-spacing: 0.24em; text-transform: uppercase;
+}
+.included { display: grid; gap: 0.55rem; width: 100%; }
+.included li {
+  display: grid; grid-template-columns: 1.4rem 1fr; align-items: baseline; gap: 0.5rem;
+  line-height: 1.5;
+}
+.included li::before {
+  content: ""; width: 0.95rem; height: 1px; background: var(--rust-deep); translate: 0 -0.3em;
+}
+
+.price {
+  width: 100%; margin-top: 0.75rem;
+  display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 0.25rem 1.5rem;
+  padding-block: 1.1rem; border-block: 1.5px solid var(--ink);
+}
+.price__label {
+  font-family: var(--font-mono); font-weight: 500; font-size: var(--step--1);
+  letter-spacing: 0.2em; text-transform: uppercase;
+}
+.price__amount {
+  font-family: var(--font-display); font-size: clamp(2.4rem, 1.8rem + 2.4vw, 3.6rem); line-height: 1;
+  color: var(--olive-deep); font-variant-numeric: tabular-nums;
+}
+.collection__note { font-size: var(--step--1); line-height: 1.6; color: var(--on-cream-muted); max-width: 52ch; }
+.collection__copy .btn { margin-top: 0.5rem; }
+
+/* photo compositions */
+.collection__media { position: relative; aspect-ratio: 0.92; }
+.collection__frame {
+  position: absolute; display: block; overflow: hidden;
+  border: 1.5px solid var(--ink); padding: 0.65rem;
+}
+.collection__frame img { width: 100%; height: 100%; object-fit: cover; transition: scale 1.2s var(--ease-out); }
+.collection__frame:hover img { scale: 1.04; }
+.collection__frame--main { width: 62%; height: 92%; left: 0; top: 0; }
+.collection--flip .collection__frame--main { left: auto; right: 0; }
+.collection__print { position: absolute; transition: rotate 0.6s var(--ease-out), box-shadow 0.6s var(--ease-out), translate 0.6s var(--ease-out); }
+.collection__print:hover { rotate: 0deg; box-shadow: var(--shadow-print-lift); translate: 0 -4px; }
+.collection__print--a { width: 54%; aspect-ratio: 1.25; right: 0; bottom: 0; rotate: 3deg; }
+.collection--flip .collection__print--a { right: auto; left: 0; rotate: -3deg; }
+.collection__media--weddings .collection__print--a { bottom: 12%; }
+.collection__print--b { width: 36%; aspect-ratio: 1.1; right: 8%; bottom: -4%; rotate: -5deg; z-index: 2; }
+.collection__media--weddings .collection__print--b { right: 30%; bottom: -3%; }
+
+/* settle the prints into their tilt as they develop */
+.js .collection__print.reveal:not(.is-visible) { rotate: 0deg; }
+
+/* ===== Responsive ===== */
+@media (max-width: 1020px) {
+  .i-intro__inner { grid-template-columns: 1fr; }
+  .i-intro__media { justify-self: center; max-width: 20rem; }
+  .i-quote__inner, .collection__inner { grid-template-columns: 1fr; }
+  .collection--flip .collection__media { order: 0; }
+  .collection__media { width: min(100%, 34rem); justify-self: center; }
+  .i-quote__photos { width: min(100%, 30rem); justify-self: center; }
+  .i-quote--hailey .i-quote__photos { order: -1; }
+}
+
+@media (max-width: 720px) {
+  .price-index__name { font-size: 1rem; }
+  .collection__media { aspect-ratio: 0.85; }
+  .collection__frame--main { width: 70%; height: 86%; }
+  .collection__print--a { width: 60%; }
+  .collection__media--weddings .collection__print--b { right: 36%; width: 40%; }
+  .i-quote__flower { left: -10%; width: 34%; }
+}
