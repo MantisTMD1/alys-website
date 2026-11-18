@@ -3,6 +3,9 @@
   root.classList.add('js');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+  /* ----- A hello for anyone peeking at the console ----- */
+  console.log('Need a website? Reach out here: https://evanstmartindevelopment.com/');
+
   /* ----- Footer year ----- */
   document.querySelectorAll('[data-year]').forEach((el) => {
     el.textContent = new Date().getFullYear();
