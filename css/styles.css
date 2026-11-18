@@ -298,7 +298,7 @@ a { color: inherit; }
 .mobile-menu a[aria-current="page"] { color: var(--rust-deep); }
 .mobile-menu a { transition: color 0.3s, padding-left 0.5s var(--ease-out); }
 .mobile-menu a:hover, .mobile-menu a:focus-visible { color: var(--rust-deep); padding-left: 0.6rem; }
-.mobile-menu__flower { position: absolute; width: 70vw; max-width: 22rem; right: -14vw; bottom: -6vw; transform: rotate(-14deg); pointer-events: none; }
+.mobile-menu__flower { position: absolute; width: 66vw; max-width: 22rem; right: -20vw; bottom: -9vw; transform: rotate(-14deg); pointer-events: none; }
 @keyframes menu-in { to { opacity: 1; transform: none; } }
 body.menu-open { overflow: hidden; }
 
@@ -318,8 +318,11 @@ body.menu-open { overflow: hidden; }
 .mobile-menu .social a {
   font-size: inherit; padding: 0; opacity: 1; transform: none; animation: none;
   width: 2.75rem; height: 2.75rem;
-  border: 1px solid rgb(40 42 39 / 0.25);
+  /* solid chips so the flower behind never muddies the icons */
+  background: var(--cream); border: 1.5px solid var(--ink);
+  box-shadow: 0 4px 12px -6px rgb(40 42 39 / 0.35);
 }
+.mobile-menu .social a:hover, .mobile-menu .social a:focus-visible { background: var(--ink); }
 .mobile-menu .social a:hover, .mobile-menu .social a:focus-visible { padding-left: 0; color: var(--cream); }
 
 /* ===== Polaroid / print motif ===== */
