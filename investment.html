@@ -21,7 +21,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preload" href="assets/fonts/BagelFatOne-400.woff2" as="font" type="font/woff2" crossorigin>
   <style>/* Self-hosted Google Fonts (latin subset) */ @font-face { font-family: 'Bagel Fat One'; font-style: normal; font-weight: 400; font-display: swap; src: url("assets/fonts/BagelFatOne-400.woff2") format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; } @font-face { font-family: 'Roboto Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url("assets/fonts/RobotoMono-400.woff2") format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; } @font-face { font-family: 'Roboto Mono'; font-style: normal; font-weight: 500; font-display: swap; src: url("assets/fonts/RobotoMono-500.woff2") format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; } @font-face { font-family: 'Work Sans'; font-style: italic; font-weight: 400; font-display: swap; src: url("assets/fonts/WorkSans-400i.woff2") format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; } @font-face { font-family: 'Work Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url("assets/fonts/WorkSans-400.woff2") format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; } @font-face { font-family: 'Work Sans'; font-style: normal; font-weight: 500; font-display: swap; src: url("assets/fonts/WorkSans-500.woff2") format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }</style>
-  <link rel="stylesheet" href="css/styles.css?v=19">
+  <link rel="stylesheet" href="css/styles.css?v=20">
   <link rel="stylesheet" href="css/investment.css?v=3">
 </head>
 <body>
@@ -48,7 +48,18 @@
 
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
         <span class="sr-only">Menu</span>
-        <span class="menu-toggle__bars" aria-hidden="true"></span>
+        <svg class="menu-cam" viewBox="0 0 32 32" aria-hidden="true">
+          <g class="menu-cam__burst"><path d="M16 1.5v3M16 27.5v3M1.5 16h3M27.5 16h3M5.7 5.7l2.1 2.1M24.2 24.2l2.1 2.1M5.7 26.3l2.1-2.1M24.2 7.8l2.1-2.1"/></g>
+          <g class="menu-cam__body">
+            <rect class="menu-cam__shutter" x="22.5" y="6.2" width="4" height="2.2" rx=".8"/>
+            <path d="M11 9.5 12.8 6.6h6.4L21 9.5"/>
+            <rect x="3.5" y="9.5" width="25" height="17" rx="3.2"/>
+            <circle cx="16" cy="18" r="5.6"/>
+            <circle class="menu-cam__iris" cx="16" cy="18" r="2.4"/>
+            <circle class="menu-cam__flash" cx="8" cy="13.6" r="1.1"/>
+          </g>
+          <g class="menu-cam__close"><path d="M9 9l14 14M23 9 9 23"/></g>
+        </svg>
       </button>
     </nav>
 

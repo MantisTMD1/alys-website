@@ -236,17 +236,43 @@ a { color: inherit; }
 .nav-cta:hover svg { translate: 3px 0; }
 
 .menu-toggle { display: none; width: 3rem; height: 3rem; justify-self: end; position: relative; }
-.menu-toggle__bars, .menu-toggle__bars::before, .menu-toggle__bars::after {
-  position: absolute; left: 0.5rem; right: 0.5rem; height: 2px; background: var(--ink);
-  transition: transform 0.45s var(--ease-out), opacity 0.3s;
+/* Camera menu button: the lens breathes, the shutter clicks on hover,
+   and opening the menu fires a flash that turns the camera into a close X. */
+.menu-cam { position: absolute; inset: 0.3rem; width: calc(100% - 0.6rem); height: calc(100% - 0.6rem); overflow: visible; }
+.menu-cam * { fill: none; stroke: var(--ink); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transform-box: fill-box; transform-origin: center; }
+.menu-cam__flash { fill: var(--rust-deep); stroke: none; }
+.menu-cam__shutter { fill: var(--ink); stroke: none; transition: translate 0.2s var(--ease-out); }
+.menu-cam__iris { animation: cam-focus 6s 2s var(--ease-in-out) infinite; }
+.menu-cam__body { transition: scale 0.45s var(--ease-out), rotate 0.45s var(--ease-out), opacity 0.3s; }
+.menu-cam__burst { opacity: 0; }
+.menu-cam__burst path { stroke: var(--rust); stroke-width: 1.6; }
+.menu-cam__close path { stroke-dasharray: 20; stroke-dashoffset: 20; transition: stroke-dashoffset 0.4s var(--ease-out); }
+.menu-cam__close { opacity: 0; transition: opacity 0.2s; }
+
+.menu-toggle:hover .menu-cam__shutter { translate: 0 0.7px; }
+.menu-toggle:hover .menu-cam__iris { animation: none; scale: 0.55; transition: scale 0.35s var(--ease-out); }
+
+.menu-toggle[aria-expanded="true"] .menu-cam__body { scale: 0.4; rotate: -25deg; opacity: 0; transition-delay: 0.12s; }
+.menu-toggle[aria-expanded="true"] .menu-cam__shutter { translate: 0 0.9px; }
+.menu-toggle[aria-expanded="true"] .menu-cam__burst { animation: cam-burst 0.55s var(--ease-out); }
+.menu-toggle[aria-expanded="true"] .menu-cam__close { opacity: 1; transition-delay: 0.2s; }
+.menu-toggle[aria-expanded="true"] .menu-cam__close path { stroke-dashoffset: 0; transition-delay: 0.22s; }
+.menu-toggle[aria-expanded="true"] .menu-cam__close path:last-child { transition-delay: 0.32s; }
+.menu-toggle:focus-visible { outline: 2px solid var(--rust-deep); outline-offset: 2px; border-radius: 0.5rem; }
+
+@keyframes cam-focus { 0%, 80%, 100% { scale: 1; } 88% { scale: 0.5; } }
+@keyframes cam-burst {
+  0% { opacity: 0; scale: 0.6; }
+  25% { opacity: 1; }
+  100% { opacity: 0; scale: 1.15; }
 }
-.menu-toggle__bars { top: 50%; }
-.menu-toggle__bars::before, .menu-toggle__bars::after { content: ""; left: 0; right: 0; }
-.menu-toggle__bars::before { transform: translateY(-7px); }
-.menu-toggle__bars::after { transform: translateY(7px); }
-.menu-toggle[aria-expanded="true"] .menu-toggle__bars { background: transparent; }
-.menu-toggle[aria-expanded="true"] .menu-toggle__bars::before { transform: rotate(45deg); }
-.menu-toggle[aria-expanded="true"] .menu-toggle__bars::after { transform: rotate(-45deg); }
+/* a soft camera flash washes over the menu as it opens */
+.mobile-menu::before {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: var(--paper); opacity: 0;
+  animation: cam-flash 0.5s var(--ease-out);
+}
+@keyframes cam-flash { 0% { opacity: 0.85; } 100% { opacity: 0; } }
 
 .mobile-menu {
   position: fixed; inset: var(--menu-top, 5rem) 0 0; z-index: 49;
