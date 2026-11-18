@@ -23,7 +23,7 @@
     }
   };
   header?.addEventListener('focusin', () => header.classList.remove('is-hidden'));
-  onScroll();
+  requestAnimationFrame(onScroll);
   window.addEventListener('scroll', onScroll, { passive: true });
 
   /* ----- Mobile menu ----- */
