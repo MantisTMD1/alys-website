@@ -740,7 +740,10 @@ body.menu-open { overflow: hidden; }
   .hero__polaroid { display: none; }
     .tagline__text::before, .tagline__text::after { display: none; }
   /* the hero line gets real presence on phones instead of shrinking to a footnote */
-  .tagline { padding: 1.6rem var(--gutter) 1.9rem; }
+  /* on phones the headline leads: it sits above the photo instead of below the fold */
+  .hero { display: flex; flex-direction: column; }
+  .tagline { order: -1; padding: 1.4rem var(--gutter) 1.5rem; }
+  .hero__media { height: min(70svh, 38rem); }
   .tagline__text {
     justify-content: center; max-width: 19ch; margin-inline: auto;
     font-size: clamp(1.25rem, 0.9rem + 1.8vw, 1.5rem); line-height: 1.12; letter-spacing: 0.03em;
