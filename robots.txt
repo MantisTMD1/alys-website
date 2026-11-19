@@ -1,7 +1,4 @@
-# Pre-launch: pages carry a noindex tag, so crawling stays allowed
-# (crawlers must be able to read that tag). At launch, remove the
-# noindex tags and restore the sitemap line below.
 User-agent: *
 Allow: /
 
-# Sitemap: https://alycrossphotography.com/sitemap.xml
+Sitemap: https://alycrossphotography.com/sitemap.xml
