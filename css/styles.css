@@ -779,3 +779,8 @@ body.menu-open { overflow: hidden; }
   .js [data-split] .word > span { translate: none; rotate: none; }
   .js .meet__media .meet__frame::before { opacity: 1; translate: none; }
 }
+
+@media (max-width: 480px) {
+  /* phones get a portrait crop of the hero, already centred on the bride */
+  .hero__photo { object-position: 50% 50%; }
+}
