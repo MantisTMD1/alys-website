@@ -210,10 +210,12 @@
     toggle?.addEventListener('click', () => { userPaused = !userPaused; sync(); });
 
     if ('IntersectionObserver' in window) {
-      // Start fetching a little before it scrolls in
-      new IntersectionObserver(([entry], obs) => {
+      // Start fetching a little before it scrolls in, but never while the page itself is still loading
+      const watchForFetch = () => new IntersectionObserver(([entry], obs) => {
         if (entry.isIntersecting) { video.preload = 'auto'; video.load(); obs.disconnect(); }
       }, { rootMargin: '600px 0px' }).observe(video);
+      if (document.readyState === 'complete') watchForFetch();
+      else window.addEventListener('load', watchForFetch, { once: true });
       new IntersectionObserver(([entry]) => { inView = entry.isIntersecting; sync(); }, { threshold: 0.2 }).observe(video);
     } else {
       inView = true;
